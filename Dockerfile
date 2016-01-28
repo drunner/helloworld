@@ -12,9 +12,9 @@ ADD ["./assets/opt","/opt/dr"]
 RUN chown dockeruser /usr/local/bin/*
 RUN chown dockeruser /opt/dr/*
 
-VOLUME ["/dr"]
-RUN chown dockeruser /dr
+RUN mkdir /dr && chown dockeruser /dr
 
+VOLUME ["/dr"]
 USER dockeruser
 
 #CMD ["/usr/local/bin/simplesecrets"]
