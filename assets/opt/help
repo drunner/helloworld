@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Read in the name of the service. This is set by the user at install time.
-# dr creates the servicename.txt file for us.
-SERVICENAME=$(</dr/txt/servicename.txt)
+# Service name passed as argument by dr.
+SERVICENAME="$1"
 
 cat <<EOF >&2
    

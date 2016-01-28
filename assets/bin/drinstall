@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SERVICENAME="$1"
+
 echo "simple example of dr compliant container. Hi!" > /dr/txt/shorthelp.txt
 
-cp /opt/dr/* /dr/bin/
+cp -a /opt/dr/* /dr/bin/

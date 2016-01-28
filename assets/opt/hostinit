@@ -7,4 +7,6 @@
 #
 #
 
+SERVICENAME="$1"
+
 echo "hostinit completed successfully."
