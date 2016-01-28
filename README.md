@@ -1,5 +1,5 @@
 # docker-dr-helloworld
-Simple example of a docker container that supports dr.
+Simple example of a docker container that supports [dr](https://github.com/j842/dr).
 
 ## Usage 
 
