@@ -2,6 +2,8 @@
 
 SERVICENAME="$1"
 
+# This script is run inside the container by the script "run" on the host.
+
 cat <<EOF
 ▌─────────────────────────▐█─────▐
 ▌────▄──────────────────▄█▓█▌────▐

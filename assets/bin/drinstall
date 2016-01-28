@@ -2,6 +2,12 @@
 
 SERVICENAME="$1"
 
+
+# dr mounts the service directory on the host to /dr
+# We cneed to copy scripts etc into there.
+
+# help file for dr
 echo "simple example of dr compliant container. Hi!" > /dr/txt/shorthelp.txt
 
-cp -a /opt/dr/* /dr/bin/
+# scripts that dr can run
+cp -a /opt/forhost/* /dr/bin/
