@@ -7,4 +7,4 @@ CONTAINERNAME="$2"
 # It launches the docker container and runs our hello world command.
 
 docker run --rm -i -t --name="${SERVICENAME}-run" -h "${HOSTNAME}" \
-               ${CONTAINERNAME} /usr/local/bin/drinstall ${SERVICENAME}
+               ${CONTAINERNAME} /usr/local/bin/helloworld ${SERVICENAME} ${CONTAINERNAME}

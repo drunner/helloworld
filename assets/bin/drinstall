@@ -11,3 +11,5 @@ echo "simple example of dr compliant container. Hi!" > /dr/txt/shorthelp.txt
 
 # scripts that dr can run
 cp -a /opt/forhost/* /dr/bin/
+
+echo "drinstall completed succesfully."
