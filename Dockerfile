@@ -21,6 +21,11 @@ RUN adduser -S -u 22022 -G drgroup -g '' druser
 ADD ["./dr","/dr"]
 RUN chown -R druser:drgroup /dr
 
-# expose volume and lock in druser.
+# lock in druser.
 USER druser
+
+# get bin files into path for easy acccess
+echo "PATH=$PATH:/dr/bin" >> $HOME/.bash_profile
+
+# expose volume
 VOLUME ["/dr/config"]
