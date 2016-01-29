@@ -1,16 +1,29 @@
 # docker-dr-helloworld
 Simple example of a docker container that supports [dr](https://github.com/j842/dr).
 
-## Usage 
+## Example usage without dr
 
-    dr install j842/dr-helloworld helloworld
-    dr helloworld run
+```
+docker run --rm -i -t j842/dr-helloworld /usr/local/bin/helloworld helloworld
+```
 
-## Description
+## Example usage with dr
 
-drinstall in the container is called by dr install on the host. It adds the scripts to the host for
-the other commands (in our case just help and run).
+```
+dr install j842/dr-helloworld helloworld
+dr helloworld run
+```
+
+## Usage details
+
+```
+dr install j842/dr-helloworld SERVICENAME
+```
+on the host calls the drinstall script in the container. It adds the scripts for
+the other commands to the host (in our case just help and run).
 
 You can then use 
+```
     dr SERVICENAME run
+```
 to execute the 'run' script, which launches the container and runs helloworld.
