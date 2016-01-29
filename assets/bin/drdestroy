@@ -7,3 +7,5 @@ CONTAINERNAME="$2"
 # Often there's nothing to do here.
 # An exception could be if the container does something on a remote host 
 # on install and needs to roll that back on destroy.
+
+echo "drdestroy completed succesfully."
