@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SERVICENAME="$1"
+CONTAINERNAME="$2"
 
 # This script is run inside the container, not on the host.
 # dr mounts the service directory on the host to /dr
