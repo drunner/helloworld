@@ -17,9 +17,6 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 RUN addgroup -S -g 22022 drgroup
 RUN adduser -S -u 22022 -G drgroup -g '' druser
 
-# create the key folders and allow druser access.
-RUN mkdir /dr /config && chown druser:drgroup /dr /config
-
 # add in the assets.
 ADD ["./dr","/dr"]
 ADD ["./usrlocalbin","/usr/local/bin"]
