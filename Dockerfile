@@ -19,11 +19,11 @@ RUN adduser -S -u 22022 -G drgroup -g '' druser
 
 # add in the assets.
 ADD ["./dr","/dr"]
-RUN chown -R druser:drgroup /dr
-RUN ln -s /dr/bin/* /usr/local/bin/
+ADD ["./bin","/usr/local/bin"]
+RUN chown -R druser:drgroup /dr /usr/local/bin && chmod a-w -R /dr
 
 # lock in druser.
 USER druser
 
 # expose volume
-VOLUME ["/dr/config"]
+VOLUME ["/config"]
