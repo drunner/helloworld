@@ -25,7 +25,7 @@ RUN chown -R druser:drgroup /dr
 USER druser
 
 # get bin files into path for easy acccess
-echo "PATH=$PATH:/dr/bin" >> $HOME/.bash_profile
+RUN echo "PATH=$PATH:/dr/bin" >> $HOME/.bash_profile
 
 # expose volume
 VOLUME ["/dr/config"]
