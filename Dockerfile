@@ -20,12 +20,10 @@ RUN adduser -S -u 22022 -G drgroup -g '' druser
 # add in the assets.
 ADD ["./dr","/dr"]
 RUN chown -R druser:drgroup /dr
+RUN ln -s /dr/bin/* /usr/local/bin/
 
 # lock in druser.
 USER druser
-
-# get bin files into path for easy acccess
-RUN echo "PATH=$PATH:/dr/bin" >> $HOME/.bash_profile
 
 # expose volume
 VOLUME ["/dr/config"]
