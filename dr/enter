@@ -6,7 +6,7 @@ IMAGENAME="$2"
 # This script is run on the host.
 # It launches the docker container and runs our hello world command.
 
-docker run -i -t --name="${SERVICENAME}-run" -h "${HOSTNAME}"     \
+docker run -i -t --name="${SERVICENAME}-enter" -h "${HOSTNAME}"     \
                -v "dr-${SERVICENAME}-config:/config"                   \
                ${IMAGENAME} helloworld ${SERVICENAME} ${IMAGENAME}
-docker rm "${SERVICENAME}-run"
+docker rm "${SERVICENAME}-enter"

@@ -10,4 +10,4 @@
 SERVICENAME="$1"
 IMAGENAME="$2"
 
-echo "hostdestroy completed successfully."
+echo "dr-helloworld destroy completed successfully."

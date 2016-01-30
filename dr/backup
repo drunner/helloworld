@@ -13,4 +13,4 @@ SERVICENAME="$1"
 IMAGENAME="$2"
 BACKUPPATH="$3"
 
-echo "backup completed successfully."
+echo "dr-helloworld backup completed successfully."
