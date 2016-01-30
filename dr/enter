@@ -8,5 +8,5 @@ IMAGENAME="$2"
 
 docker run -i -t --name="${SERVICENAME}-enter" -h "${HOSTNAME}"     \
                -v "dr-${SERVICENAME}-config:/config"                   \
-               ${IMAGENAME} helloworld ${SERVICENAME} ${IMAGENAME}
+               ${IMAGENAME} /bin/bash
 docker rm "${SERVICENAME}-enter"
