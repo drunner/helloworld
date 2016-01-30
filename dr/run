@@ -9,4 +9,4 @@ IMAGENAME="$2"
 docker run -i -t --name="${SERVICENAME}-run" -h "${HOSTNAME}"     \
                -v "dr-${SERVICENAME}-config:/config"                   \
                ${IMAGENAME} helloworld ${SERVICENAME} ${IMAGENAME}
-docker rm "${SERVICENAME}-run"
+docker rm "${SERVICENAME}-run" >/dev/null 2>&1

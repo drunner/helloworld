@@ -7,11 +7,11 @@ IMAGENAME="$2"
 cat <<EOF >&2
    
 NAME
-   dr ${SERVICENAME} - says hello world! Yay!
-   
+   ${SERVICENAME} - says hello world! Yay!
+       
 SYNOPSIS
-   dr ${SERVICENAME} help      - This help
-   dr ${SERVICENAME} run       - Make it go!
+   ${SERVICENAME} help      - This help
+   ${SERVICENAME} run       - Make it go!
    
 DESCRIPTION
    A friendly example. Built from ${IMAGENAME}.
