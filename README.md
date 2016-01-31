@@ -1,4 +1,4 @@
-# docker-dr-helloworld
+# dr-helloworld
 Simple example of a docker container that supports [dr](https://github.com/j842/dr).
 
 ## Example usage without dr
