@@ -10,4 +10,3 @@ SERVICENAME="$1"
 IMAGENAME="$2"
 RESTOREPATH="$3"
 
-echo "dr-helloworld restore completed successfully."
