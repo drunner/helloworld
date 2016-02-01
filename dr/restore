@@ -3,7 +3,7 @@
 # restore
 #
 # This file is run on the host, and restores any configuration or data
-# that is outside /dr/config from the backup in RESTOREPATH.
+# that is outside /config from the backup in RESTOREPATH.
 #
 
 SERVICENAME="$1"
