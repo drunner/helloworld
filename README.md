@@ -10,14 +10,14 @@ docker run --rm -i -t j842/dr-helloworld /usr/local/bin/helloworld helloworld
 ## Example usage with dr
 
 ```
-dr install j842/dr-helloworld helloworld
+dr helloworld install j842/dr-helloworld 
 dr helloworld run
 ```
 
 ## Usage details
 
 ```
-dr install j842/dr-helloworld SERVICENAME
+dr SERVICENAME install j842/dr-helloworld 
 ```
 on the host calls the drinstall script in the container. It adds the scripts for
 the other commands to the host (in our case just help and run).
