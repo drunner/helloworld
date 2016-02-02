@@ -2,5 +2,7 @@
 # These can be used in any Docker image that's part of this service.
 # 
 
-VOLUMES=("/config" "/data")
+# e.g.
+# VOLUMES=("/config" "/data")
 
+VOLUMES=( )
