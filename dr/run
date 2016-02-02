@@ -1,12 +1,12 @@
 #!/bin/bash
-
-SERVICENAME="$1"
-IMAGENAME="$2"
+source "$( dirname "$(readlink -f "$0")" )/_variables"
 
 # This script is run on the host.
 # It launches the docker container and runs our hello world command.
 
-docker run -i -t --name="${SERVICENAME}-run" -h "${HOSTNAME}"     \
-               -v "dr-${SERVICENAME}-config:/config"                   \
-               ${IMAGENAME} helloworld ${SERVICENAME} ${IMAGENAME}
+# Run the service. Can't use --rm as we don't want volumes cleared.
+# DOCKEROPTS, SERVICENAME AND IMAGENAME are set in _variables.
+docker run -i -t --name="${SERVICENAME}-run" -h "${HOSTNAME}"           \
+               ${DOCKEROPTS[@]}  ${IMAGENAME}                           \
+               helloworld ${SERVICENAME} ${IMAGENAME}
 docker rm "${SERVICENAME}-run" >/dev/null 2>&1
