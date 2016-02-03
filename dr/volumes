@@ -1,7 +1,8 @@
 # Array for volume containers that are handled by dr.
 # These can be used in any Docker image that's part of this service.
 # 
-
+#
+# It's important to preserve the order here for restore of older backups.
 # e.g.
 # VOLUMES=("/config" "/data")
 
