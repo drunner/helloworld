@@ -7,7 +7,7 @@ source "$( dirname "$(readlink -f "$0")" )/_variables"
 # DOCKEROPTS, SERVICENAME AND IMAGENAME are set by _variables.
 docker run -i -t --name="${SERVICENAME}-enter" -h "${HOSTNAME}"     \
                ${DOCKEROPTS[@]}                                     \
-               ${IMAGENAME} /bin/bash
+               ${IMAGENAME} /bin/bash "$@"
 RVAL=$?
 docker rm "${SERVICENAME}-enter"
 exit "$RVAL"
