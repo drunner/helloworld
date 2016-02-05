@@ -18,9 +18,9 @@ RUN addgroup -S -g 22022 drgroup
 RUN adduser -S -u 22022 -G drgroup -g '' druser
 
 # add in the assets.
-ADD ["./dr","/dr"]
+ADD ["./drunner","/drunner"]
 ADD ["./usrlocalbin","/usr/local/bin"]
-RUN chmod a+rx -R /usr/local/bin  &&  chmod a-w -R /dr
+RUN chmod a+rx -R /usr/local/bin  &&  chmod a-w -R /drunner
 
 # lock in druser.
 USER druser
