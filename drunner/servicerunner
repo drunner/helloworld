@@ -1,0 +1,113 @@
+#!/bin/bash
+set -o nounset
+
+                                                                                                                                                          
+#  ad88888ba                                        88                          88888888ba                                                                  
+# d8"     "8b                                       ""                          88      "8b                                                                 
+# Y8,                                                                           88      ,8P                                                                 
+# `Y8aaaaa,     ,adPPYba,  8b,dPPYba,  8b       d8  88   ,adPPYba,   ,adPPYba,  88aaaaaa8P'  88       88  8b,dPPYba,   8b,dPPYba,    ,adPPYba,  8b,dPPYba,  
+#   `"""""8b,  a8P_____88  88P'   "Y8  `8b     d8'  88  a8"     ""  a8P_____88  88""""88'    88       88  88P'   `"8a  88P'   `"8a  a8P_____88  88P'   "Y8  
+#         `8b  8PP"""""""  88           `8b   d8'   88  8b          8PP"""""""  88    `8b    88       88  88       88  88       88  8PP"""""""  88          
+# Y8a     a8P  "8b,   ,aa  88            `8b,d8'    88  "8a,   ,aa  "8b,   ,aa  88     `8b   "8a,   ,a88  88       88  88       88  "8b,   ,aa  88          
+#  "Y88888P"    `"Ybbd8"'  88              "8"      88   `"Ybbd8"'   `"Ybbd8"'  88      `8b   `"YbbdP'Y8  88       88  88       88   `"Ybbd8"'  88          
+
+
+readonly CODE_S="\e[32m"
+readonly CODE_E="\e[0m"
+
+#------------------------------------------------------------------------------------
+
+function die { 
+   echo " ">&2 ; echo -e "\e[31m\e[1m${1}\e[0m">&2  ; echo " ">&2
+   exit 1 
+}
+
+#------------------------------------------------------------------------------------
+
+function readVariables {
+MYDIR=$( dirname "$(readlink -f "$0")" )
+if [ "$#" -eq 0 ] || [ ! -e "$MYDIR/_variables" ]; then 
+   die "servicerunner needs to be invoked via dRunner, not manually."; 
+fi
+source "$MYDIR/_variables"
+}
+
+#------------------------------------------------------------------------------------
+
+function showhelp {
+# SERVICENAME and IMAGENAME are provided by _variables.
+cat <<EOF >&2
+
+NAME
+   ${CODE_S}${SERVICENAME}${CODE_E}     
+       
+SYNOPSIS
+   ${CODE_S}${SERVICENAME}${CODE_E} help
+      This help.
+   
+   ${CODE_S}${SERVICENAME} run${CODE_E}
+      Say hello to the world.
+   
+DESCRIPTION
+   A simple dRunner example. Built from ${IMAGENAME}.
+   
+EOF
+}
+
+#------------------------------------------------------------------------------------
+
+function dockerrun {
+   docker run -i -t --name="${SERVICENAME}-${COMMAND}" -h "${HOSTNAME}"     \
+      ${DOCKEROPTS[@]} ${IMAGENAME} "$@"
+   RVAL=$?
+   docker rm "${SERVICENAME}-enter"   
+   if [ $RVAL -ne 0 ]; then die "${COMMAND} failed." ; fi
+}
+
+#------------------------------------------------------------------------------------
+
+function main {
+   readVariables
+   COMMAND="${1}"
+   case "$COMMAND" in 
+         install)
+            ;;
+            
+         destroy)
+            ;;
+                     
+         backup)
+            BACKUPPATH="$2"
+            ;;
+         
+         restore)
+            RESTOREPATH="$2"
+            ;;
+         
+         help)
+            showhelp
+            ;;
+         
+         enter)
+            dockerrun /bin/bash "$@"
+            ;;
+         
+         update)
+            dockerrun helloworld "${SERVICENAME}" "${IMAGENAME}"
+            ;;
+
+         run)
+            ;;
+            
+         *)
+            showhelp
+            die "Unrecognised command ${CODE_S}${COMMAND}${CODE_E}"            
+            ;;
+   esac
+
+   exit "$RVAL"          
+}
+
+#------------------------------------------------------------------------------------
+
+main "$@"
