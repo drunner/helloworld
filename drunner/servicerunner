@@ -58,7 +58,7 @@ EOF
 
 function dockerrun {
    docker run -i -t --name="${SERVICENAME}-${COMMAND}" -h "${HOSTNAME}"     \
-      ${DOCKEROPTS[@]} ${IMAGENAME} "$@"
+      "${DOCKEROPTS[@]}" "${IMAGENAME}" "$@"
    RVAL=$?
    docker rm "${SERVICENAME}-enter"   
    if [ $RVAL -ne 0 ]; then die "${COMMAND} failed." ; fi
