@@ -55,7 +55,7 @@ EOF
 function dockerrun {
    docker run -i -t --name="${SERVICENAME}-${COMMAND}" -h "${HOSTNAME}"     \
       "${DOCKEROPTS[@]}" "${IMAGENAME}" "$@"
-   RVAL=$?
+   local RVAL=$?
    docker rm "${SERVICENAME}-enter"   
    if [ $RVAL -ne 0 ]; then die "${COMMAND} failed." ; fi
 }
@@ -66,8 +66,9 @@ function main {
    if [ "$#" -eq 0 ]; then 
       die "servicerunner must have the install argument."
    fi
+
+   local COMMAND="${1}"
    
-   COMMAND="${1}"
    case "$COMMAND" in 
          install)
             ;;
@@ -103,8 +104,6 @@ function main {
             die "Unrecognised command ${CODE_S}${COMMAND}${CODE_E}"            
             ;;
    esac
-
-   exit "$RVAL"          
 }
 
 #------------------------------------------------------------------------------------
