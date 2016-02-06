@@ -1,6 +1,4 @@
 #!/bin/bash
-set -o nounset
-
                                                                                                                                                           
 #  ad88888ba                                        88                          88888888ba                                                                  
 # d8"     "8b                                       ""                          88      "8b                                                                 
@@ -12,6 +10,13 @@ set -o nounset
 #  "Y88888P"    `"Ybbd8"'  88              "8"      88   `"Ybbd8"'   `"Ybbd8"'  88      `8b   `"YbbdP'Y8  88       88  88       88   `"Ybbd8"'  88          
 
 
+
+#------------------------------------------------------------------------------------
+# Initialisation of globals.
+
+set -o nounset
+MYDIR=$( dirname "$(readlink -f "$0")" )
+source "$MYDIR/_variables"
 readonly CODE_S="\e[32m"
 readonly CODE_E="\e[0m"
 
@@ -22,15 +27,6 @@ function die {
    exit 1 
 }
 
-#------------------------------------------------------------------------------------
-
-function readVariables {
-MYDIR=$( dirname "$(readlink -f "$0")" )
-if [ "$#" -eq 0 ] || [ ! -e "$MYDIR/_variables" ]; then 
-   die "servicerunner needs to be invoked via dRunner, not manually."; 
-fi
-source "$MYDIR/_variables"
-}
 
 #------------------------------------------------------------------------------------
 
@@ -67,7 +63,10 @@ function dockerrun {
 #------------------------------------------------------------------------------------
 
 function main {
-   readVariables
+   if [ "$#" -eq 0 ]  then 
+      die "servicerunner must have the install argument."; 
+   fi
+   
    COMMAND="${1}"
    case "$COMMAND" in 
          install)
