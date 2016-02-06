@@ -63,8 +63,8 @@ function dockerrun {
 #------------------------------------------------------------------------------------
 
 function main {
-   if [ "$#" -eq 0 ]  then 
-      die "servicerunner must have the install argument."; 
+   if [ "$#" -eq 0 ]; then 
+      die "servicerunner must have the install argument."
    fi
    
    COMMAND="${1}"
