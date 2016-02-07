@@ -58,7 +58,7 @@ function dockerrun {
    docker run -i -t --name="${SERVICENAME}-${COMMAND}" -h "${HOSTNAME}" "${IMAGENAME}" "$@"
    local RVAL=$?
    docker rm "${SERVICENAME}-${COMMAND}" >/dev/null
-   if [ $RVAL -ne 0 ]; then die "${COMMAND} failed." ; fi
+   if [ $RVAL -ne 0 ]; then die "${SERVICENAME} ${COMMAND} failed." ; fi
 }
 
 #------------------------------------------------------------------------------------
