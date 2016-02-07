@@ -78,7 +78,11 @@ function main {
          destroy)
             ;;
                      
-         backup)
+         backupstart)
+            BACKUPPATH="$2"
+            ;;
+         
+         backupend)
             BACKUPPATH="$2"
             ;;
          
