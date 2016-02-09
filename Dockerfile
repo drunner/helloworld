@@ -8,7 +8,7 @@ FROM alpine
 MAINTAINER j842
 
 # we use non-root user in the container for security.
-# dr expects uid 22022 and gid 22022.
+# dRunner expects uid 22022 and gid 22022.
    # - debian
    #RUN groupadd -g 22022 drgroup
    #RUN adduser --disabled-password --gecos '' -u 22022 --gid 22022 druser
