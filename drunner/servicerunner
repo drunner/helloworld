@@ -58,8 +58,7 @@ function main {
       die "servicerunner must have the install argument."
    fi
 
-   COMMAND="${1}"
-   
+   COMMAND="${1}" 
    case "$COMMAND" in 
    
           #--- standard (required) commands
