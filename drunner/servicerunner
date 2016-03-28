@@ -33,6 +33,9 @@ SYNOPSIS
    ${CODE_S}${SERVICENAME} run${CODE_E}
       Say hello to the world.
 
+   ${CODE_S}${SERVICENAME} configure SECRETWORD${CODE_E}
+      Set the secret word.
+
 DESCRIPTION
    A simple dRunner example. Built from ${IMAGENAME}.
 
@@ -43,7 +46,10 @@ EOF
 # Run a command in the container. If we had any volumes we'd add in "${DOCKEROPTS[@]}".
 
 function dockerrun {
-   docker run -i -t --name="${SERVICENAME}-${COMMAND}" -h "${HOSTNAME}" "${IMAGENAME}" "$@"
+   docker run -i -t \
+      -e "SECRETWORD=${SECRETWORD}" \
+      --name="${SERVICENAME}-${COMMAND}" \
+      "${IMAGENAME}" "$@"
    local RVAL=$?
    docker rm "${SERVICENAME}-${COMMAND}" >/dev/null
    if [ $RVAL -ne 0 ]; then die "${SERVICENAME} ${COMMAND} failed." ; fi
@@ -59,6 +65,11 @@ function main {
 
    COMMAND="${1}"
    case "$COMMAND" in
+
+         #--- hooks
+         install_end)
+            [ -v SECRETWORD ] || save_environment "SECRETWORD" "not yet set"
+            ;;
 
           #--- standard (required) commands
 
@@ -78,6 +89,12 @@ function main {
 
          run)
             dockerrun helloworld "${SERVICENAME}" "${IMAGENAME}"
+            ;;
+
+         configure)
+            [ "$#" -eq 2 ] || die "Usage:\n ${SERVICENAME} configure SECRETWORD"
+            save_environment "SECRETWORD" "$2"
+            echo "Okay, the secret word is ${2}."
             ;;
 
          #--- unrecognised commands
