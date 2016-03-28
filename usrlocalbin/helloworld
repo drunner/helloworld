@@ -5,7 +5,7 @@ IMAGENAME="$2"
 
 # This script is run inside the container by the script "run" on the host.
 
-cat <<EOF
+cat <<'EOF'
                  ,.     ,.
                 {^ \-"-/ ^}
                 "   """   "
@@ -24,7 +24,7 @@ cat <<EOF
                      )"")
                     (""/
                      `"
-                     
+
     Hello world!
     I'm $SERVICENAME
     Based on $IMAGENAME
