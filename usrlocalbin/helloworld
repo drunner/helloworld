@@ -24,7 +24,8 @@ cat <<'EOF'
                      )"")
                     (""/
                      `"
-
+EOF
+cat <<EOF
     Hello world!
     I'm $SERVICENAME
     Based on $IMAGENAME
