@@ -104,7 +104,7 @@ function main {
             # no output and set exit code 127 (E_NOTIMPL).
             ! isHook ${COMMAND} || exit 127
 
-            showhelp
+            dockerrun funpolice
             die "Unrecognised command ${CODE_S}${COMMAND}${CODE_E}"
             ;;
    esac
