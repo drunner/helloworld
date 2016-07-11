@@ -1,0 +1,33 @@
+# drunner service configuration for helloworld
+#
+---
+configuration:
+   SECRETWORD:
+      - description: "The secret word to use."
+      - default: "squirrel"
+      - type: string
+
+volumes:
+
+run:
+   - docker run --rm -it
+      -e "SECRETWORD=${SECRETWORD}"
+      --name="${SERVICENAME}-run"
+      "${IMAGENAME}" "${SERVICENAME}" "${IMAGENAME}"
+
+help: |
+   NAME
+      ${SERVICENAME}
+
+   SYNOPSIS
+      ${CODE_S}${SERVICENAME} help${CODE_E}
+         This help.
+
+      ${CODE_S}${SERVICENAME} run${CODE_E}
+         Say hello to the world.
+
+      ${CODE_S}${SERVICENAME} configure SECRETWORD${CODE_E}
+         Set the secret word.
+
+   DESCRIPTION
+      A simple dRunner example. Built from ${IMAGENAME}.
