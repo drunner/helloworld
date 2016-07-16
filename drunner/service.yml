@@ -2,25 +2,29 @@
 #
 ---
 configuration:
-   - SECRETWORD:
-         description: "The secret word to use."
-         default: "squirrel"
-         type: string
+   SECRETWORD:
+      description: "The secret word to use."
+      default: "squirrel"
+      type: string
+   PUBLICWORD:
+      description: "A word for everyone"
+      required: true
 
 volumes:
-   - dave:
+   dave-${SERVICENAME}:
       manage: false
       backup: false
-       
+   steve-${SERVICENAME}:
+      manage: false
+      backup: false
+
 containers:
    - drunner/helloworld
 
 commands:
    run:
-      - docker run --rm -it
-         -e "SECRETWORD=${SECRETWORD}"
-         --name="${SERVICENAME}-run"
-         "${IMAGENAME}" "${SERVICENAME}" "${IMAGENAME}"
+      - docker run --rm -it -e "SECRETWORD=${SECRETWORD}"
+         --name="${SERVICENAME}-run" "${IMAGENAME}" "${SERVICENAME}" "${IMAGENAME}"
 
    stop:
       - print "What?"
