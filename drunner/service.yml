@@ -2,14 +2,17 @@
 #
 ---
 configuration:
-   SECRETWORD:
-      description: "The secret word to use."
-      default: "squirrel"
-      type: string
+   - SECRETWORD:
+         description: "The secret word to use."
+         default: "squirrel"
+         type: string
 
 volumes:
-
-extracontainers:
+   - dave:
+      manage: false
+      backup: false
+       
+containers:
    - drunner/helloworld
 
 commands:
