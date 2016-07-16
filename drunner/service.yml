@@ -23,8 +23,7 @@ containers:
 
 commands:
    run:
-      - docker run --rm -it -e "SECRETWORD=${SECRETWORD}"
-         --name="${SERVICENAME}-run" "${IMAGENAME}" "${SERVICENAME}" "${IMAGENAME}"
+      - docker run --rm -e SECRETWORD=${SECRETWORD} ${IMAGENAME} helloworld ${SERVICENAME} ${IMAGENAME}
 
    stop:
       - print "What?"
