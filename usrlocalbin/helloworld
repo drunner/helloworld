@@ -4,8 +4,6 @@ SERVICENAME="$1"
 IMAGENAME="$2"
 
 # This script is run inside the container by the script "run" on the host.
-ECODE=$(printf "\e")
-echo "$ECODE[93m"
 #$ECODE[104m"
 cat <<'EOF'
 
@@ -30,12 +28,11 @@ cat <<'EOF'
       |                     `"                   |
       |                                          |
 EOF
-echo "$ECODE[0m"
 cat <<EOF
 
       Hello world!
       I'm the dService ${IMAGENAME}.
       I'm installed as ${SERVICENAME}.
       My secret word is ${SECRETWORD}.
-      
+
 EOF

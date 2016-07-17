@@ -33,13 +33,13 @@ help: |
       ${SERVICENAME}
 
    SYNOPSIS
-      ${CODE_S}${SERVICENAME} help${CODE_E}
+      ${SERVICENAME} help
          This help.
 
-      ${CODE_S}${SERVICENAME} run${CODE_E}
+      ${SERVICENAME} run
          Say hello to the world.
 
-      ${CODE_S}${SERVICENAME} configure SECRETWORD${CODE_E}
+      ${SERVICENAME} configure SECRETWORD
          Set the secret word.
 
    DESCRIPTION
