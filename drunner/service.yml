@@ -6,17 +6,8 @@ configuration:
       description: "The secret word to use."
       default: "squirrel"
       type: string
-   PUBLICWORD:
-      description: "A word for everyone"
-      required: true
 
 volumes:
-   dave-${SERVICENAME}:
-      manage: false
-      backup: false
-   steve-${SERVICENAME}:
-      manage: false
-      backup: false
 
 containers:
    - drunner/helloworld
