@@ -1,17 +1,18 @@
 -- drunner service configuration for helloworld
 
 function setup()
--- d.addconfig(NAME, DESCRIPTION, DEFAULT VALUE, TYPE, REQUIRED)
-   d.addconfig("SECRETWORD","The secret word to use","squirrel","string",true)
+-- addconfig(NAME, DESCRIPTION, DEFAULT VALUE, TYPE, REQUIRED)
+   addconfig("SECRETWORD","The secret word to use","squirrel","string",true)
 
--- d.addvolume(NAME, BACKUP, EXTERNAL)
+-- addvolume(NAME, BACKUP, EXTERNAL)    
 
--- d.addcontainer(NAME)
+-- addcontainer(NAME). First one must always be this container.
    addcontainer("drunner/helloworld")
+
 end
 
 function run()
-  result=d.run(d.esub("docker run --rm -e SECRETWORD=${SECRETWORD} drunner/helloworld helloworld ${SERVICENAME} ${IMAGENAME}"))
+  result=drun(dsub("docker run --rm -e SECRETWORD=${SECRETWORD} drunner/helloworld helloworld ${SERVICENAME} "))
   if result~=0 then
      print("Failed to run helloworld.")
    end
@@ -22,7 +23,7 @@ function stop()
 end
 
 function help()
-   return d.esub([[
+   return dsub([[
    NAME
       ${SERVICENAME}
 
