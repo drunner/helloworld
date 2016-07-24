@@ -1,6 +1,6 @@
 -- drunner service configuration for helloworld
 
-function setup()
+function drunner_setup()
 -- addconfig(NAME, DESCRIPTION, DEFAULT VALUE, TYPE, REQUIRED)
    addconfig("SECRETWORD","The secret word to use","squirrel","string",true)
 
