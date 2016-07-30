@@ -15,7 +15,7 @@ end
 -- e.g. helloworld run
 
 function run()
-  result=drun("docker","run","--rm", "-e", "SECRETWORD=${SECRETWORD}", "drunner/helloworld", "helloworld", "${SERVICENAME}")
+  result=drun("docker","run","--rm", "-e", "SECRETWORD=${SECRETWORD}", "drunner/helloworld", "helloworld", "${SERVICENAME}" "${IMAGENAME}")
   if result~=0 then
      print("Failed to run helloworld.")
    end
