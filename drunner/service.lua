@@ -4,7 +4,7 @@ function drunner_setup()
 -- addconfig(NAME, DESCRIPTION, DEFAULT VALUE, TYPE, REQUIRED)
    addconfig("SECRETWORD","The secret word to use","squirrel","string",true)
 
--- addvolume(NAME, BACKUP, EXTERNAL)
+-- addvolume(NAME, [BACKUP], [EXTERNAL])
 
 -- addcontainer(NAME)
    addcontainer("drunner/helloworld")  -- First one must always be this container.
