@@ -9,5 +9,5 @@ before_install:
 script:
    - ddev build
    - ddev test
-   - helloworld configure TRAVIS
+   - helloworld configure secretword="I AM TRAVIS!"
    - helloworld run
