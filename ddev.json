@@ -12,7 +12,7 @@
             },
             {
                 "key": "TAG",
-                "value": "drunner/helloworld"
+                "value": "drunner/helloworld:wibble"
             }
         ]
     }
