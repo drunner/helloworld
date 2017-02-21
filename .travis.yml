@@ -2,12 +2,10 @@ language: cpp
 sudo: required
 dist: trusty
 before_install:
-   - wget -nv https://drunner.s3.amazonaws.com/lin/install_drunner_travis.sh
+   - wget -nv https://drunner.s3.amazonaws.com/10/lin/install_drunner_travis.sh
    - /bin/bash install_drunner_travis.sh
    - export PATH=$PATH:$HOME/.drunner/bin/
 
 script:
-   - ddev build
-   - ddev test
-   - helloworld configure secretword="I AM TRAVIS!"
-   - helloworld run
+   - drunner install . helloworld
+   - ddev test helloworld
