@@ -13,15 +13,15 @@ function run(...)
          print(i, v)
       end
    else
-      return docker("run","--rm", "-e", "SECRETWORD=${SECRETWORD}", imagename,
-                  "helloworld", "${SERVICENAME}", imagename)
+      result, output = docker("run","--rm", "-e", "SECRETWORD=${SECRETWORD}", imagename,
+                              "helloworld", "${SERVICENAME}", imagename)
+      dieunless( result, "Failed to run helloworld: "..output )
    end
-   return 0
 end
 
 
 function selftest()
-   return run()
+   run()
 end
 
 
